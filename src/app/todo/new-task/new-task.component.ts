@@ -10,7 +10,6 @@ export class NewTaskComponent {
   newTaskTitle: string = '';
 
   constructor(private todoService: TodoService) { }
-
   count = 0;
   addTask() {
     if(this.count > 0) return
@@ -20,7 +19,6 @@ export class NewTaskComponent {
       completed: false
     };
 
-    this.todoService.addTodo(newTodo);
     this.todoService.addTodo(newTodo);
     this.newTaskTitle = '';
     this.count++
