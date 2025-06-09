@@ -7,20 +7,19 @@ import { Todo } from '../../shared/models/todo.model';
   styleUrls: ['./new-task.component.css']
 })
 export class NewTaskComponent {
-  newTaskTitle: string = '';
+    newTaskTitle: string = '';
 
-  constructor(private todoService: TodoService) { }
-  count = 0;
-  addTask() {
-    if(this.count > 0) return
-    const newTodo: Todo = {
-      id: this.todoService.getTodoNewId(),
-      title: this.newTaskTitle,
-      completed: false
-    };
+    constructor(private todoService: TodoService) { }
 
-    this.todoService.addTodo(newTodo);
-    this.newTaskTitle = '';
-    this.count++
-  }
+    addTask() {
+        if (!this.newTaskTitle.trim()) return; //não salvar se o título estiver vazio
+        const newTodo: Todo = {
+            id: this.todoService.getTodoNewId(),
+            title: this.newTaskTitle,
+            completed: false
+        };
+
+        this.todoService.addTodo(newTodo);
+        this.newTaskTitle = '';
+    }
 }
