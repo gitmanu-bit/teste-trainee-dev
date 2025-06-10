@@ -22,4 +22,11 @@ export class TodoItemComponent {
   onTaskChecked(): void {
     this.todoService.updateTodo(this.todo);
   }
+  editarTodo(): void {
+  const novoTitulo = prompt('Editar Tarefa:', this.todo.title);
+  if (novoTitulo !== null && novoTitulo.trim() !== '') {
+    this.todo.title = novoTitulo.trim();
+    this.todoService.updateTodo(this.todo);
+  }
+}
 }
